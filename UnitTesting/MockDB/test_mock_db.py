@@ -5,7 +5,7 @@ from unittest.mock import patch
 from sqlalchemy.engine import create_engine
 from sqlalchemy.orm import Session
 
-from models import Product, base
+from models import base
 
 import db_process
 
@@ -23,7 +23,7 @@ class DBTest(unittest.TestCase):
             mock_session.return_value = Session(self.engine)
             
             product_names = {"lolipop", "bear", "ant"}
-            
+
             db_process.add_products(product_names)
 
             products = db_process.get_products()
