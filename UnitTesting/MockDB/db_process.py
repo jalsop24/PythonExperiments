@@ -30,6 +30,11 @@ def list_products():
 
         print(session.query(Product).all())
 
+def get_products():
+    with Session(engine) as session:
+
+        return {*session.query(Product).all()}
+
 def main():
     refresh_table()
     add_products(["orange", "apple", "pear"])
