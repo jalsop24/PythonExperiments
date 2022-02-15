@@ -86,6 +86,7 @@ class TestAPI(unittest.TestCase):
 
             self.assertEqual(response.json(), data[key])
     
+    @unittest.expectedFailure
     def test_fail(self):
         self.fail("Testing a fail")
 
