@@ -85,7 +85,9 @@ class TestAPI(unittest.TestCase):
             response = api_process.get_from_api({"key": key})
 
             self.assertEqual(response.json(), data[key])
-            
+    
+    def test_fail(self):
+        self.fail("Testing a fail")
 
 if __name__ == "__main__":
     unittest.main()
