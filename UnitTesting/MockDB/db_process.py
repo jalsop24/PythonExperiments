@@ -2,7 +2,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy.engine import create_engine
 
-from models import Product, base
+from UnitTesting.MockDB.models import Product, base
 
 engine = create_engine("postgresql+psycopg2://test_account:psql_password@localhost:5432/testing")
 
@@ -27,12 +27,10 @@ def add_products(product_names):
 
 def list_products():
     with Session(engine) as session:
-
         print(session.query(Product).all())
 
 def get_products():
     with Session(engine) as session:
-
         return {*session.query(Product).all()}
 
 def main():

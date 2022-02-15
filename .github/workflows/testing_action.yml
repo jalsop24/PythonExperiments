@@ -31,5 +31,5 @@ jobs:
          
     - name: Test with unittest
       run: |
-        python -m unittest discover .\UnitTesting\MockAPI
-        python -m unittest discover .\UnitTesting\MockDB
+        python -m unittest discover -s .\UnitTesting\MockAPI
+        python -m unittest discover -s .\UnitTesting\MockDB

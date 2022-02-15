@@ -6,7 +6,7 @@ import json
 
 from requests.models import Response, Request
 
-import api_process
+import UnitTesting.MockAPI.api_process as api_process
 
 class MockAPI():
     
@@ -68,27 +68,23 @@ class TestAPI(unittest.TestCase):
 
 
     def test_get_normal(self):
-        with patch("api_process.requests.get") as mock_get:
-
-            mock_get.side_effect = self.API.get
+        with patch("api_process.requests.get", side_effect=self.API.get):
 
             r = api_process.get_from_api()
 
             self.assertEqual(r.status_code, 200)
 
     def test_post_data(self):
-        with patch("api_process.requests.get") as mock_get, patch("api_process.requests.post") as mock_post:
-            mock_get.side_effect = self.API.get
-            mock_post.side_effect = self.API.post
-
-            data = {"a": 1}
+        with patch("api_process.requests.get", side_effect=self.API.get), patch("api_process.requests.post", side_effect=self.API.post):
+            key = "a"
+            data = {key: 1}
 
             response = api_process.post_to_api(data)
             self.assertEqual(response.status_code, 200)
 
-            response = api_process.get_from_api({"key": "a"})
+            response = api_process.get_from_api({"key": key})
 
-            self.assertEqual(response.json(), data)
+            self.assertEqual(response.json(), data[key])
             
 
 if __name__ == "__main__":

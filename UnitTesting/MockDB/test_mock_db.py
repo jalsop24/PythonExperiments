@@ -5,9 +5,9 @@ from unittest.mock import patch
 from sqlalchemy.engine import create_engine
 from sqlalchemy.orm import Session
 
-from models import base
+from UnitTesting.MockDB.models import base
 
-import db_process
+import UnitTesting.MockDB.db_process as db_process
 
 class DBTest(unittest.TestCase):
 
@@ -19,7 +19,7 @@ class DBTest(unittest.TestCase):
         base.metadata.create_all(cls.engine)
 
     def test_session(self):
-        with patch("db_process.Session") as mock_session:
+        with patch("UnitTesting.MockDB.db_process.Session") as mock_session:
             mock_session.return_value = Session(self.engine)
             
             product_names = {"lolipop", "bear", "ant"}
