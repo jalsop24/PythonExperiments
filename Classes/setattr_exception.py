@@ -1,3 +1,8 @@
+'''
+Script to demonstrate that setting an attribute of a class with no 
+attributes doesn't raise an exception.
+'''
+
 
 ATTR_NAME = "an_attribute"
 
