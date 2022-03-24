@@ -2,7 +2,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy.engine import create_engine
 
-from UnitTesting.MockDB.models import Product, base
+from UnitTesting.models import Product, base
 
 engine = create_engine("postgresql+psycopg2://test_account:psql_password@localhost:5432/testing")
 

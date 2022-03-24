@@ -6,7 +6,7 @@ import json
 
 from requests.models import Response, Request
 
-import UnitTesting.MockAPI.api_process as api_process
+import UnitTesting.api_process as api_process
 
 class MockAPI():
     
